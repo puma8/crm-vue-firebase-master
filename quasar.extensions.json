@@ -1,0 +1,10 @@
+{
+  "@quasar/testing-unit-jest": {
+    "babel": "babelrc",
+    "options": [
+      "scripts"
+    ]
+  },
+  "@quasar/qcalendar": {},
+  "@quasar/colorize": {}
+}

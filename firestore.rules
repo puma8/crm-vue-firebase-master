@@ -1,0 +1,235 @@
+function isSignedIn() {
+  return request.auth != null;
+}
+function emailVerified() {
+  return request.auth.token.email_verified;
+}
+function userExists() {
+  return exists(/databases/$(database)/documents/users/$(request.auth.uid));
+}
+
+// [READ] Data that exists on the Firestore document
+function existingData() {
+  return resource.data;
+}
+// [WRITE] Data that is sent to a Firestore document
+function incomingData() {
+  return request.resource.data;
+}
+
+function isUser(userId) {
+  return request.auth.uid == userId;
+}
+
+function userEmail(userId) {
+  return get(/databases/$(database)/documents/users/$(userId)).data.email;
+}
+
+function isOwnerRole() {
+  return request.auth.token.roleId == 'owner';
+}
+
+function isAdminRole() {
+  return request.auth.token.roleId == 'admin';
+}
+
+function isUserRole() {
+  return request.auth.token.roleId == 'user';
+}
+
+function claimedOrg() {
+  return request.auth.token.orgId
+}
+
+function isNotUserRole() {
+  return isOwnerRole() || isAdminRole()
+}
+
+function existingIsOfClaimedOrg() {
+  return claimedOrg() == existingData().orgId
+}
+
+function incomingIsOfClaimedOrg() {
+  return claimedOrg() == incomingData().orgId
+}
+
+function taskIsOfClaimedOrg(taskId) {
+  return true
+  // return claimedOrg() == get(/databases/$(database)/documents/tasks/$(taskId)).data.orgId;
+}
+
+function eventIsOfClaimedOrg(eventId) {
+  return true
+  // return claimedOrg() == get(/databases/$(database)/documents/tasks/$(taskId)).data.orgId;
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /metadata/{userId} {
+      allow read: if isUser(userId);
+      allow write: if isUser(userId);
+    }
+
+    match /users/{userId} {
+      allow read: if existingData().orgId == claimedOrg();
+      allow write: if false;
+    }
+
+    match /organizations/{orgId} {
+      allow get: if claimedOrg() == orgId;
+      allow list: if false;
+      allow update: if claimedOrg() == orgId &&
+                      isNotUserRole();
+      allow create, delete: if false;
+
+      match /settings/{setting} {
+        allow read: if claimedOrg() == orgId;
+        allow write: if setting != 'security' || false;
+      }
+    }
+
+    match /companies/{companyId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg() &&
+                      isNotUserRole();
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == companyId &&
+                      isNotUserRole();
+      allow delete: if false;
+    }
+
+    match /people/{personId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg() &&
+                      isNotUserRole();
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == personId &&
+                      isNotUserRole();
+      allow delete: if existingIsOfClaimedOrg();
+    }
+
+    match /deals/{dealId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg()
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == dealId && (
+                        (isUserRole() && request.auth.uid in existingData().members) ||
+                        (!isUserRole() && true)
+                      )
+      allow delete: if false;
+    }
+
+    match /projects/{projectId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg()
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == projectId && (
+                        (isUserRole() && request.auth.uid in existingData().members) ||
+                        (!isUserRole() && true)
+                      )
+      allow delete: if false;
+    }
+
+    match /tasks/{taskId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg()
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == taskId && (
+                        (isUserRole() && (request.auth.uid == existingData().assigneeId || request.auth.uid in existingData().members)) ||
+                        (!isUserRole() && true)
+                      )
+      allow delete: if false;
+    }
+
+    match /tasks/{taskId}/subtasks/{subtaskId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if taskIsOfClaimedOrg(taskId) &&
+                      incomingIsOfClaimedOrg() &&
+                      incomingData().taskId == taskId && (
+                        (isUserRole() && (request.auth.uid == get(/databases/$(database)/documents/tasks/$(taskId)).data.assigneeId || request.auth.uid in get(/databases/$(database)/documents/tasks/$(taskId)).data.members)) ||
+                        (!isUserRole() && true)
+                      )
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingIsOfClaimedOrg() &&
+                      incomingData().taskId == taskId &&
+                      incomingData().id == subtaskId && (
+                        (isUserRole() && request.auth.uid == existingData().assigneeId) ||
+                        (!isUserRole() && true)
+                      )
+      allow delete: if false;
+    }
+
+    match /tasks/{taskId}/comments/{commentId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if taskIsOfClaimedOrg(taskId) &&
+                      incomingIsOfClaimedOrg() &&
+                      incomingData().taskId == taskId &&
+                      incomingData().createdBy == request.auth.uid && (
+                        (isUserRole() && (request.auth.uid == get(/databases/$(database)/documents/tasks/$(taskId)).data.assigneeId || request.auth.uid in get(/databases/$(database)/documents/tasks/$(taskId)).data.members)) ||
+                        (!isUserRole() && true)
+                      )
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingIsOfClaimedOrg() &&
+                      incomingData().taskId == taskId &&
+                      incomingData().id == commentId &&
+                      existingData().createdBy == request.auth.uid;
+      allow delete: if false;
+    }
+
+    match /events/{eventId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if incomingIsOfClaimedOrg()
+      allow update: if existingIsOfClaimedOrg() &&
+                      incomingData().id == eventId
+      allow delete: if false;
+    }
+
+    match /history/{eventId} {
+      allow read: if existingIsOfClaimedOrg();
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /integration/gDrive/users/{userId} {
+      allow read: if isUser(userId);
+      allow create: if incomingData().refreshToken != null && incomingData().accessToken != null;
+      allow update: if isUser(userId);
+      allow delete: if false;
+    }
+
+    match /integration/slack/private/{userId} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    match /integration/slack/public/{userId} {
+      allow read: if isUser(userId);
+      allow create: if false;
+      allow update: if isUser(userId);
+      allow delete: if false;
+    }
+
+    match /integration/nylas/private/{userId} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    match /integration/nylas/public/{userId} {
+      allow read: if isUser(userId);
+      allow create: if false;
+      allow update: if isUser(userId);
+      allow delete: if false;
+    }
+
+    match /slackChannels/{channelId} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /tmp/{tmpId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

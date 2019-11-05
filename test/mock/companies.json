@@ -1,0 +1,41 @@
+[{
+  "id": "comp1-org1",
+  "orgId": "org1",
+  "name": "Comp1-org1",
+  "website": "Comp1-org1-website",
+  "address": "Comp1-org1-address",
+  "designationId": "comp1-org1-designation",
+  "roleId": "comp1-org1-role",
+  "phoneNumbers": [],
+  "emails": []
+}, {
+  "id": "comp2-org1",
+  "orgId": "org1",
+  "name": "Comp2-org1",
+  "website": "Comp2-org1-website",
+  "address": "Comp2-org1-address",
+  "designationId": "comp2-org1-designation",
+  "roleId": "comp2-org1-role",
+  "phoneNumbers": [],
+  "emails": []
+}, {
+  "id": "comp1-org2",
+  "orgId": "org2",
+  "name": "Comp1-org2",
+  "website": "Comp1-org2-website",
+  "address": "Comp1-org2-address",
+  "designationId": "comp1-org2-designation",
+  "roleId": "comp1-org2-role",
+  "phoneNumbers": [],
+  "emails": []
+}, {
+  "id": "comp2-org2",
+  "orgId": "org2",
+  "name": "Comp2-org2",
+  "website": "Comp2-org2-website",
+  "address": "Comp2-org2-address",
+  "designationId": "comp2-org2-designation",
+  "roleId": "comp2-org1-role",
+  "phoneNumbers": [],
+  "emails": []
+}]

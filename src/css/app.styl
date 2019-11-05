@@ -1,0 +1,161 @@
+.flex-1
+  flex 1
+
+.primary-bg-color
+  background-color: $grey-3
+
+.q-toolbar
+  width calc(100% - 57px)
+
+.sidebar
+  width 78px
+  transform translate3d(0px, 0px, 0px)
+  border-right 1px solid rgba(0,0,0,0.12)
+  position fixed
+  left 0
+  top 0
+  bottom 0
+  background #fff
+  z-index 1000
+
+.q-page-container
+  padding-left 78px
+
+.page-primary
+  padding-top 50px
+  flex 1
+
+.page-settings
+  padding-top 50px
+  flex 1
+
+  .menu
+    width 250px
+    background-color $grey-2
+
+  .container
+    padding-left 250px
+
+.content-container
+  flex 1
+  background-color $grey-3
+
+  .sections
+    > * not(:first-child)
+      margin-top 16px
+
+.dialog-sm-sized
+  width 300px
+
+.dialog-md-sized
+  width 700px
+
+.editable .edit {
+  visibility: hidden
+}
+.editable:hover {
+  cursor: pointer;
+}
+.editable:hover .edit {
+  visibility: visible;
+  cursor: pointer;
+}
+
+.label-separator
+  width 500px
+  text-align center
+  border-bottom 3px solid $grey-6
+  line-height 0.1em !important
+  margin auto
+  margin-top 24px
+  margin-bottom 24px
+
+  span
+    padding 0 30px
+    background-color: $grey-3
+
+.best-border
+  border: 1px solid $grey-4
+
+.best-rounded
+  border-radius: 8px
+
+.best-hover:hover
+  opacity: 0.8
+
+.wrapped-text
+  word-wrap break-word
+
+.timeline
+  padding 0
+  width 100%
+  list-style none
+  &__content
+    padding-bottom 24px
+  &__dot
+    position absolute
+    top 0
+    bottom 0
+    width 15px
+    &:before, &:after
+      content ''
+      background currentColor
+      display block
+      position absolute
+    &:before
+      border 3px solid transparent
+      border-radius 100%
+      height 15px
+      width 15px
+      top 4px
+      left 0
+      transition background .3s ease-in-out, border .3s ease-in-out
+    &:after
+      width 3px
+      opacity .4
+      top 24px
+      bottom 0
+      left 6px
+    .q-icon
+      position absolute
+      top 0
+      left 0
+      right 0
+      font-size 16px
+      height 38px
+      line-height 38px
+      width 100%
+      color white
+  &__dot-img
+    position absolute
+    top 4px
+    left 0
+    right 0
+    height 30px
+    width 30px
+    background currentColor
+    border-radius 50%
+  &__entry
+    position relative
+    line-height 22px
+    &:last-child
+      padding-bottom 0 !important
+      .timeline__dot:after
+        content none
+    &--icon
+      .timeline__dot
+        width 30px
+        &:before
+          height 30px
+          width 30px
+        &:after
+          top 41px
+          left 14px
+  &--dense--right
+    .timeline
+      &__entry
+        padding-left 40px
+        &--icon .timeline__dot
+          left -8px
+      &__dot
+        left 0

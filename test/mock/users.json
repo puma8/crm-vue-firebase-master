@@ -1,0 +1,49 @@
+[{
+  "id": "owner-org1",
+  "orgId": "org1",
+  "firstName": "John",
+  "lastName": "Smith",
+  "name": "John Smith",
+  "email": "john@gmail.com",
+  "roleId": "owner"
+}, {
+  "id": "admin-org1",
+  "orgId": "org1",
+  "firstName": "Jane",
+  "lastName": "Dana",
+  "name": "Jane Dana",
+  "email": "jane@gmail.com",
+  "roleId": "admin"
+}, {
+  "id": "user-org1",
+  "orgId": "org1",
+  "firstName": "James",
+  "lastName": "Dana",
+  "name": "James Dana",
+  "email": "james@gmail.com",
+  "roleId": "user"
+}, {
+  "id": "owner-org2",
+  "orgId": "org2",
+  "firstName": "John",
+  "lastName": "Smith",
+  "name": "John Smith",
+  "email": "john1@gmail.com",
+  "roleId": "owner"
+}, {
+  "id": "admin-org2",
+  "orgId": "org2",
+  "firstName": "Jane",
+  "lastName": "Dana",
+  "name": "Jane Dana",
+  "email": "jane1@gmail.com",
+  "roleId": "admin"
+}, {
+  "id": "user-org2",
+  "orgId": "org2",
+  "firstName": "James",
+  "lastName": "Dana",
+  "name": "James Dana",
+  "email": "james1@gmail.com",
+  "roleId": "user"
+}]

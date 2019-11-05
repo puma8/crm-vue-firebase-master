@@ -1,0 +1,48 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Mavrik CRM",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "rm -rf dist/ && babel 'src' --out-dir 'dist'",
+    "watch": "yarn compile --watch",
+    "serve": "yarn watch & firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "start-scripts": "nodemon dist/scripts/index.js",
+    "set-dev-env": "cross-var firebase functions:config:set sa.email=$DEVELOPMENT_SERVICE_ACCOUNT_EMAIL oauth2.client_id=$DEVELOPMENT_G_OAUTH2_CLIENT_ID oauth2.client_secret=$DEVELOPMENT_G_OAUTH2_CLIENT_SECRET frontapp.token=$DEVELOPMENT_FRONTAPP_TOKEN slack.client_id=$DEVELOPMENT_SLACK_CLIENT_ID slack.client_secret=$DEVELOPMENT_SLACK_CLIENT_SECRET slack.oauth_redirect=$DEVELOPMENT_SLACK_OAUTH_REDIRECT_URI slack.verification_token=$DEVELOPMENT_SLACK_VERIFICATION_TOKEN mavrik.base_url=$DEVELOPMENT_MAVRIK_CRM_BASE_URL mavrik.confirmation_path=$DEVELOPMENT_MAVRIK_CRM_CONFIRMATION_PATH sendgrid.api_key=$DEVELOPMENT_SENDGRID_API_KEY",
+    "set-staging-env": "cross-var firebase functions:config:set sa.email=$STAGING_SERVICE_ACCOUNT_EMAIL oauth2.client_id=$STAGING_G_OAUTH2_CLIENT_ID oauth2.client_secret=$STAGING_G_OAUTH2_CLIENT_SECRET frontapp.token=$STAGING_FRONTAPP_TOKEN slack.client_id=$STAGING_SLACK_CLIENT_ID slack.client_secret=$STAGING_SLACK_CLIENT_SECRET slack.oauth_redirect=$STAGING_SLACK_OAUTH_REDIRECT_URI slack.verification_token=$STAGING_SLACK_VERIFICATION_TOKEN mavrik.base_url=$STAGING_MAVRIK_CRM_BASE_URL mavrik.confirmation_path=$STAGING_MAVRIK_CRM_CONFIRMATION_PATH sendgrid.api_key=$STAGING_SENDGRID_API_KEY",
+    "predeploy": "yarn compile",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
+    "@slack/web-api": "^5.0.1",
+    "axios": "^0.19.0",
+    "crypto": "^1.0.1",
+    "es6-promise-pool": "^2.5.0",
+    "firebase-admin": "^8.2.0",
+    "firebase-functions": "^3.0.2",
+    "googleapis": "^40.0.0",
+    "gtoken": "^3.0.2",
+    "html-to-mrkdwn": "^3.0.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
+    "nylas": "^4.7.1",
+    "qs": "^6.7.0",
+    "tiny-async-pool": "^1.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "cross-var": "^1.1.0",
+    "dotenv": "^8.0.0",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}

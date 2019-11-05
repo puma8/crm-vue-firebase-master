@@ -1,0 +1,49 @@
+[{
+  "id": "org1",
+  "name": "Org1",
+  "orgDriveId": "sample-org-drive-id-1",
+  "orgDriveOwnerId": "sample-org-drive-owner-id-1",
+  "settings": {
+    "deal": {
+      "boards": [],
+      "lost": [],
+      "stages": [],
+      "won": "jobs"
+    },
+    "general": {
+      "country": "US"
+    },
+    "person": {
+      "designations": [],
+      "roles": []
+    },
+    "security": {
+      "permissions": {},
+      "roles": []
+    }
+  }
+}, {
+  "id": "org2",
+  "name": "Org2",
+  "orgDriveId": "sample-org-drive-id-2",
+  "orgDriveOwnerId": "sample-org-drive-owner-id-2",
+  "settings": {
+    "deal": {
+      "boards": [],
+      "lost": [],
+      "stages": [],
+      "won": "jobs"
+    },
+    "general": {
+      "country": "US"
+    },
+    "person": {
+      "designations": [],
+      "roles": []
+    },
+    "security": {
+      "permissions": {},
+      "roles": []
+    }
+  }
+}]

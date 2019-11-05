@@ -1,0 +1,109 @@
+[{
+  "id": "task1-deal1-org1",
+  "no": 1,
+  "orgId": "org1",
+  "dealId": "deal1-org1",
+  "name": "Task1-deal1-org1",
+  "deadline": "",
+  "description": "",
+  "completed": false,
+  "members": [],
+  "subtasks": [{
+    "id": "subtask1-task1-deal1-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal1-org1",
+    "completed": false,
+    "name": "Subtask1-task1-deal1-org1"
+  }, {
+    "id": "subtask2-task1-deal1-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal1-org1",
+    "completed": false,
+    "name": "Subtask2-task1-deal1-org1"
+  }],
+  "comments": [{
+    "id": "comment1-task1-deal1-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal1-org1",
+    "createdBy": "owner-org1",
+    "text": ""
+  }, {
+    "id": "comment2-task1-deal1-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal1-org1",
+    "createdBy": "admin-org1",
+    "text": ""
+  }]
+}, {
+  "id": "task1-deal2-org1",
+  "no": 1,
+  "orgId": "org1",
+  "dealId": "deal2-org1",
+  "name": "Task1-deal2-org1",
+  "deadline": "",
+  "description": "",
+  "completed": false,
+  "members": [],
+  "subtasks": [{
+    "id": "subtask1-task1-deal2-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal2-org1",
+    "completed": false,
+    "name": "Subtask1-task1-deal2-org1"
+  }, {
+    "id": "subtask2-task1-deal2-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal2-org1",
+    "completed": false,
+    "name": "Subtask2-task1-deal2-org1"
+  }],
+  "comments": [{
+    "id": "comment1-task1-deal2-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal2-org1",
+    "createdBy": "owner-org1",
+    "text": ""
+  }, {
+    "id": "comment2-task1-deal2-org1",
+    "orgId": "org1",
+    "taskId": "task1-deal2-org1",
+    "createdBy": "admin-org1",
+    "text": ""
+  }]
+}, {
+  "id": "task1-deal1-org2",
+  "no": 1,
+  "orgId": "org2",
+  "dealId": "deal1-org2",
+  "name": "Task1-deal1-org2",
+  "deadline": "",
+  "description": "",
+  "completed": false,
+  "members": [],
+  "subtasks": [{
+    "id": "subtask1-task1-deal1-org2",
+    "orgId": "org2",
+    "taskId": "task1-deal1-org2",
+    "completed": false,
+    "name": "Subtask1-task1-deal1-org2"
+  }, {
+    "id": "subtask2-task1-deal1-org2",
+    "orgId": "org2",
+    "taskId": "task1-deal1-org2",
+    "completed": false,
+    "name": "Subtask2-task1-deal1-org2"
+  }],
+  "comments": [{
+    "id": "comment1-task1-deal1-org2",
+    "orgId": "org2",
+    "taskId": "task1-deal1-org2",
+    "createdBy": "owner-org2",
+    "text": ""
+  }, {
+    "id": "comment2-task1-deal1-org2",
+    "orgId": "org2",
+    "taskId": "task1-deal1-org2",
+    "createdBy": "admin-org2",
+    "text": ""
+  }]
+}]

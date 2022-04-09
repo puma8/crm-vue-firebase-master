@@ -24,7 +24,7 @@
     "deepmerge": "^3.3.0",
     "firebase": "^6.6.0",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "qs": "^6.7.0",
     "quasar": "1.1.7",
     "quasar-dotenv": "^1.0.4",

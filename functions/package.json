@@ -30,7 +30,7 @@
     "gtoken": "^3.0.2",
     "html-to-mrkdwn": "^3.0.0",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.26",
     "nylas": "^4.7.1",
     "qs": "^6.7.0",

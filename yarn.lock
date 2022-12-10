@@ -8869,10 +8869,15 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qs@6.7.0, qs@^6.7.0:
+qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
+
+qs@^6.7.3:
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.3.tgz#67634d715101aa950601f58dbef353b7e1696b95"
+  integrity sha512-WBoQWf5L/UOLqUj8Mvr4Om7J+ZTCqPbYPHyeLNRS9t9Q3M3/o/9ctpWnlo8yyETPclx7FhH5LidjKKJa9kdSRQ==
 
 qs@~6.5.2:
   version "6.5.2"
@@ -8886,10 +8891,10 @@ quasar-dotenv@^1.0.4:
   dependencies:
     dotenv "^6.2.0"
 
-quasar@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.0.5.tgz#caddfac55fca0779c996dc1b3977a045ae1426e6"
-  integrity sha512-8CxBZk5Ge+jUC7nzlzrLwlZRedpBkcYjkmyBOA0QJLvCXE8K8Ro68R7Vxf7+Baplo11aBMhFX1FhHZWrSM7Y2A==
+quasar@1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.1.7.tgz#68803a898a2a34c3c0b8d9ea30d40298c4a8c976"
+  integrity sha512-MNL3vSnz2fbc0OVXldJd9dxD5hRPvlKF4HZ4GWJ6u7uFDnbXUaeqUb0Sc3zwFhT1ozKRtJg/rcVsF2hSbOrixQ==
 
 query-string@^4.1.0:
   version "4.3.4"
